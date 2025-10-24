@@ -1,1 +1,7 @@
 project_id = "jcaiypgywqspwengpbsu"
+
+[functions.create-secure-link]
+verify_jwt = false
+
+[functions.retrieve-secure-link]
+verify_jwt = false
