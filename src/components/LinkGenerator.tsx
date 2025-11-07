@@ -32,8 +32,7 @@ const LinkGenerator = () => {
 
       if (error) throw error;
 
-      const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
-      const linkUrl = new URL(`${base}/view/${data.accessToken}`, window.location.origin).toString();
+      const linkUrl = `${window.location.origin}/view/${data.accessToken}`;
       setGeneratedLink(linkUrl);
       toast.success("Secure link generated successfully!");
     } catch (error) {
