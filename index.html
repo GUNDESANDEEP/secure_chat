@@ -20,6 +20,15 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const p = params.get('p');
+        if (p) {
+          history.replaceState(null, '', p);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
