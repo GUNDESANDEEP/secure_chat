@@ -1,13 +1,15 @@
-import Hero from "@/components/Hero";
 import LinkGenerator from "@/components/LinkGenerator";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Hero />
+    <main className="min-h-screen">
+      <header>
+        <h1 className="sr-only">SecureLink - Encrypted One-Time Link Generator</h1>
+      </header>
       <LinkGenerator />
-    </div>
+    </main>
   );
 };
 
 export default Index;
+
