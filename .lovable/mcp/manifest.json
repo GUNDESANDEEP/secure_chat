@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://jcaiypgywqspwengpbsu.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "securelink-mcp",
+      "version": "0.1.0",
+      "title": "SecureLink MCP"
+    },
+    "tools": [
+      {
+        "name": "create_secure_link",
+        "title": "Create secure one-time link",
+        "description": "Encrypt a message and create a one-time access token for sharing it securely.",
+        "annotations": {
+          "readOnlyHint": false,
+          "idempotentHint": false,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string",
+              "description": "The secret message to encrypt."
+            },
+            "expiresInMinutes": {
+              "type": "number",
+              "description": "Expiration in minutes. Use 5, 30, 60, 1440, or 10080."
+            }
+          },
+          "required": [
+            "content",
+            "expiresInMinutes"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "retrieve_secure_link",
+        "title": "Retrieve secure one-time link",
+        "description": "Consume a secure link access token and return the decrypted message exactly once.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": true,
+          "idempotentHint": false,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "accessToken": {
+              "type": "string",
+              "description": "The one-time access token from a SecureLink URL."
+            }
+          },
+          "required": [
+            "accessToken"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
