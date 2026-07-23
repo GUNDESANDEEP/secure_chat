@@ -49,7 +49,27 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_secure_link_record: {
+        Args: {
+          _access_token: string
+          _encrypted_content: string
+          _expires_at: string
+        }
+        Returns: string
+      }
       delete_expired_links: { Args: never; Returns: undefined }
+      delete_secure_link_record: { Args: { _id: string }; Returns: undefined }
+      get_secure_link_for_access: {
+        Args: { _access_token: string }
+        Returns: {
+          accessed: boolean
+          created_at: string
+          encrypted_content: string
+          expires_at: string
+          id: string
+        }[]
+      }
+      mark_secure_link_accessed: { Args: { _id: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
